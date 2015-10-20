@@ -25,8 +25,8 @@ try:
   f.close()
 
   print "#!ipxe"
-  print "kernel http://spacewalk.csc.fi/pub/distributions/centos7-x86_64/isolinux/vmlinuz ks=http://spacewalk.csc.fi/ks/cfg/org/2/label/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=ttyS1,115200 console=tty0 initrd=initrd.img"
-  print "initrd http://spacewalk.csc.fi/pub/distributions/centos7-x86_64/isolinux/initrd.img"
+  print "kernel http://1.1.1.2/pub/distributions/centos7-x86_64/isolinux/vmlinuz ks=http://1.1.1.2/ks/cfg/org/2/label/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=ttyS1,115200 console=tty0 initrd=initrd.img"
+  print "initrd http://1.1.1.2/pub/distributions/centos7-x86_64/isolinux/initrd.img"
   print "boot"
 
 except:
