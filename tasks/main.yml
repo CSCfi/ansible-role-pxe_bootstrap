@@ -26,6 +26,12 @@
 - name: copy_pxe_bootscript
   copy: src=boot.py dest=/var/www/cgi-bin/boot.py owner=apache group=apache mode="0550"
 
+- name: copy initrd.img file
+  copy: src=initrd.img dest=/var/www/html/ks/initrd.img owner=apache group=apache mode="0550"
+
+- name: copy vmlinuz file
+  copy: src=boot.py dest=/var/www/html/ks/vmlinuz owner=apache group=apache mode="0550"
+
 - name: create_dhcpd_config_dir
   file: path=/etc/dhcp/dhcpd.d state=directory owner=root group=root mode="0755"
 

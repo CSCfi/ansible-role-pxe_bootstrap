@@ -25,8 +25,8 @@ try:
   f.close()
 
   print "#!ipxe"
-  print "kernel http://ftp.funet.fi/pub/mirrors/centos.org/7/os/x86_64/isolinux/vmlinuz ks=http://" + nodesettings["kickstart_server_ip"] + "/ks/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=ttyS1,115200 console=tty0 initrd=initrd.img"
-  print "initrd http://ftp.funet.fi/pub/mirrors/centos.org/7/os/x86_64/isolinux/initrd.img"
+  print "kernel http://" + nodesettings["kickstart_server_ip"] + "/ks/vmlinuz ks=http://" + nodesettings["kickstart_server_ip"] + "/ks/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=ttyS1,115200 console=tty0 initrd=initrd.img"
+  print "initrd http://" + nodesettings["kickstart_server_ip"] + "/ks/initrd.img"
   print "boot"
 
 except:
