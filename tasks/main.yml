@@ -26,6 +26,9 @@
 - name: copy_pxe_bootscript
   copy: src=boot.py dest=/var/www/cgi-bin/boot.py owner=apache group=apache mode="0550"
 
+- name: create_ks_dir
+  file: path=/var/www/html/ks state=directory owner=apache group=apache mode="0755"
+
 - name: copy initrd.img file
   copy: src=initrd.img dest=/var/www/html/ks/initrd.img owner=apache group=apache mode="0550"
 
