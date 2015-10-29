@@ -1,4 +1,4 @@
-Role Name
+ansible-role-pxe\_bootstrap
 =========
 
 A brief description of the role goes here.
@@ -25,12 +25,12 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ansible-role-pxe_bootstrap, x: 42 }
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
