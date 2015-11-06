@@ -52,3 +52,10 @@
 
 - name: apache_selinux_context
   command: restorecon -Rv /var/www/provision/
+
+- name: start and enable httpd service
+  service: name=httpd state=started enabled=yes
+
+- name: start and enable xinetd service
+  service: name=xinetd state=started enabled=yes
+
