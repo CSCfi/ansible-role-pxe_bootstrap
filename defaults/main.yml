@@ -1,2 +1,4 @@
 ---
 # defaults file for ansible-role-pxe_bootstrap
+
+repo_location: "http://www.nic.funet.fi/pub/mirrors/centos.org/7/os/x86_64/"

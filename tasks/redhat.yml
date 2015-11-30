@@ -29,11 +29,14 @@
 - name: create_ks_dir
   file: path=/var/www/html/ks state=directory owner=apache group=apache mode="0755"
 
-- name: copy initrd.img file
-  copy: src=initrd.img dest=/var/www/html/ks/initrd.img owner=apache group=apache mode="0550"
+- name: download PXE initrd.img file
+  get_url: url="{{ repo_location}}/images/pxeboot/initrd.img" dest=/var/www/html/ks/initrd.img force=yes owner=apache group=apache mode="0550"
 
-- name: copy vmlinuz file
-  copy: src=vmlinuz dest=/var/www/html/ks/vmlinuz owner=apache group=apache mode="0550"
+- name: download PXE vmlinuz file
+  get_url: url="{{ repo_location}}/images/pxeboot/vmlinuz" dest=/var/www/html/ks/vmlinuz force=yes owner=apache group=apache mode="0550"
+
+- name: download PXE upgrade.img file
+  get_url: url="{{ repo_location}}/images/pxeboot/upgrade.img" dest=/var/www/html/ks/initrd.img force=yes owner=apache group=apache mode="0550"
 
 - name: create_dhcpd_config_dir
   file: path=/etc/dhcp/dhcpd.d state=directory owner=root group=root mode="0755"
