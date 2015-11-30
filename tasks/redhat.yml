@@ -36,7 +36,7 @@
   get_url: url="{{ repo_location}}/images/pxeboot/vmlinuz" dest=/var/www/html/ks/vmlinuz force=yes owner=apache group=apache mode="0550"
 
 - name: download PXE upgrade.img file
-  get_url: url="{{ repo_location}}/images/pxeboot/upgrade.img" dest=/var/www/html/ks/initrd.img force=yes owner=apache group=apache mode="0550"
+  get_url: url="{{ repo_location}}/images/pxeboot/upgrade.img" dest=/var/www/html/ks/upgrade.img force=yes owner=apache group=apache mode="0550"
 
 - name: create_dhcpd_config_dir
   file: path=/etc/dhcp/dhcpd.d state=directory owner=root group=root mode="0755"
