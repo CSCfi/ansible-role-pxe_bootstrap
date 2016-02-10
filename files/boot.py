@@ -24,8 +24,12 @@ try:
 
   f.close()
 
+  serialport = 'ttyS0'
+  if 'serialport' in nodesettings:
+    serialport = nodesettings['serialport']
+
   print "#!ipxe"
-  print "kernel http://" + nodesettings["kickstart_server_ip"] + "/ks/vmlinuz ks=http://" + nodesettings["kickstart_server_ip"] + "/ks/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=ttyS1,115200 console=tty0 initrd=initrd.img"
+  print "kernel http://" + nodesettings["kickstart_server_ip"] + "/ks/vmlinuz ks=http://" + nodesettings["kickstart_server_ip"] + "/ks/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=" + serialport + ",115200 console=tty0 initrd=initrd.img"
   print "initrd http://" + nodesettings["kickstart_server_ip"] + "/ks/initrd.img"
   print "boot"
 
