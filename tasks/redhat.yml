@@ -11,14 +11,17 @@
 - name: configure_tftp
   lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="        disable                 = no"
 
-- name: copy_ipxe_chainboot
+- name: copy undionly.kkpxe chainboot
   copy: src=undionly.kkpxe dest=/var/lib/tftpboot/undionly.kkpxe owner=root group=root mode="0644"
 
-- name: copy_ipxe_chainboot
+- name: copy undionly.kpxe chainboot
   copy: src=undionly.kpxe dest=/var/lib/tftpboot/undionly.kpxe owner=root group=root mode="0644"
 
 - name: copy_uefi_chainboot
-  copy: src=ipxe-x86.efi dest=/var/lib/tftpboot/ipxe-x86.efi owner=root group=root mode="0644"
+  copy: src=ipxe.efi dest=/var/lib/tftpboot/ipxe.efi owner=root group=root mode="0644"
+
+- name: copy ipxe.pxe chainboot
+  copy: src=ipxe.pxe dest=/var/lib/tftpboot/ipxe.pxe owner=root group=root mode="0644"
 
 - name: ipxe_selinux_context
   command: restorecon -Rv /var/lib/tftpboot/
