@@ -8,9 +8,13 @@ sys.stderr = sys.stdout
 print "Content-Type: text/plain"
 print
 
+pxe_header = "#!ipxe"
+if "gPXE" in os.environ["HTTP_USER_AGENT"]:
+  pxe_header = "#!gpxe"
+
 def pxe_abort():
   """Abort the PXE boot, continue with the next boot device in the BIOS boot order"""
-  print "#!ipxe"
+  print pxe_header
   print "exit"
   sys.exit(0)
 
@@ -32,7 +36,7 @@ try:
   if 'serialport' in nodesettings:
     serialport = nodesettings['serialport']
 
-  print "#!ipxe"
+  print pxe_header
   print "kernel http://" + nodesettings["kickstart_server_ip"] + "/ks/vmlinuz ks=http://" + nodesettings["kickstart_server_ip"] + "/ks/" + nodesettings["kickstart_profile"] + " edd=off ksdevice=bootif kssendmac console=" + serialport + ",115200 console=tty0 initrd=initrd.img"
   print "initrd http://" + nodesettings["kickstart_server_ip"] + "/ks/initrd.img"
   print "boot"
