@@ -42,5 +42,5 @@ try:
   print "boot"
 
 except Exception as e:
-  syslog.syslog(syslog.LOG_ERR, str(e))
+  syslog.syslog(syslog.LOG_ERR, str(e)  + " hostname wasn't found in /var/www/provision/nodes/pxe_nodes.json")
   pxe_abort()
