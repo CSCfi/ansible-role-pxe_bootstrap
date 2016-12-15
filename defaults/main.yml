@@ -7,3 +7,4 @@ pxe_bootstrap_packages:
  - xinetd
  - tftp-server
 pxe_bootstrap_upgrade_img: False
+pxe_bootstrap_selinux: True

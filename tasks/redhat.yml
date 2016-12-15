@@ -18,8 +18,13 @@
 - name: copy ipxe.pxe chainboot
   copy: src=ipxe.pxe dest=/var/lib/tftpboot/ipxe.pxe owner=root group=root mode="0644"
 
+- name: install selinux package
+  package: name="policycoreutils" state=present
+  when: pxe_bootstrap_selinux
+
 - name: ipxe_selinux_context
   command: restorecon -Rv /var/lib/tftpboot/
+  when: pxe_bootstrap_selinux
 
 - name: copy in the pxe_bootscript
   copy: src=boot.py dest=/var/www/cgi-bin/boot.py owner=apache group=apache mode="0550"
