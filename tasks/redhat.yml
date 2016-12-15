@@ -1,12 +1,7 @@
 ---
-- name: install_apache
-  yum: name='httpd' state='present'
-
-- name: install_xinetd
-  yum: name='xinetd' state='present'
-
-- name: install_tftp-server
-  yum: name='tftp-server' state='present'
+- name: install package dependencies
+  package: name="{{ item }}" state=present
+  with_items: pxe_bootstrap_packages
 
 - name: configure_tftp
   lineinfile: dest=/etc/xinetd.d/tftp regexp="disable" line="        disable                 = no"
@@ -26,7 +21,7 @@
 - name: ipxe_selinux_context
   command: restorecon -Rv /var/lib/tftpboot/
 
-- name: copy_pxe_bootscript
+- name: copy in the pxe_bootscript
   copy: src=boot.py dest=/var/www/cgi-bin/boot.py owner=apache group=apache mode="0550"
 
 - name: create_ks_dir
@@ -40,6 +35,7 @@
 
 - name: download PXE upgrade.img file
   get_url: url="{{ repo_location}}/images/pxeboot/upgrade.img" dest=/var/www/html/ks/upgrade.img force=yes owner=apache group=apache mode="0550"
+  when: pxe_bootstrap_upgrade_img
 
 - name: create_dhcpd_config_dir
   file: path=/etc/dhcp/dhcpd.d state=directory owner=root group=root mode="0755"
