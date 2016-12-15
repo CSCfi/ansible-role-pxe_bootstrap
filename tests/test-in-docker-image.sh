@@ -119,6 +119,8 @@ function test_playbook(){
 }
 function extra_tests(){
 
+	echo "moar tests"
+
 }
 
 
