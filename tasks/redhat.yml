@@ -10,7 +10,7 @@
   copy: src=undionly.kpxe dest=/var/lib/tftpboot/undionly.kpxe owner=root group=root mode="0644"
 
 - name: copy snponly.efi (UEFI 64-bit) chainboot
-  copy: src=snponlt.efi dest=/var/lib/tftpboot/snponly.efi owner=root group=root mode="0644"
+  copy: src=snponly.efi dest=/var/lib/tftpboot/snponly.efi owner=root group=root mode="0644"
 
 - name: install selinux package
   package: name="policycoreutils" state=present
