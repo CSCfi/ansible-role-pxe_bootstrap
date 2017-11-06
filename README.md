@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-pxe_bootstrap.svg?branch=master)](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-pxe_bootstrap)
+[![Build Status](https://travis-ci.org/CSCfi/ansible-role-pxe_bootstrap.svg?branch=master)](https://travis-ci.org/CSCfi/ansible-role-pxe_bootstrap)
 
 ansible-role-pxe_bootstrap
 =========
@@ -7,8 +7,8 @@ Sets up a PXE system for reinstalling nodes
 
 Related roles:
 
- - https://github.com/CSC-IT-Center-for-Science/ansible-role-pxe_config
- - https://github.com/CSC-IT-Center-for-Science/ansible-role-dhcp_server
+ - https://github.com/CSCfi/ansible-role-pxe_config
+ - https://github.com/CSCfi/ansible-role-dhcp_server
 
 Requirements
 ------------
