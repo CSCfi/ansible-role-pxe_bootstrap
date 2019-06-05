@@ -14,11 +14,11 @@
 
 - name: install selinux package
   package: name="policycoreutils" state=present
-  when: pxe_bootstrap_selinux
+  when: pxe_bootstrap_selinux|bool
 
 - name: ipxe_selinux_context
   command: restorecon -Rv /var/lib/tftpboot/
-  when: pxe_bootstrap_selinux
+  when: pxe_bootstrap_selinux|bool
 
 - name: copy in the pxe_bootscript
   copy: src=boot.py dest=/var/www/cgi-bin/boot.py owner=apache group=apache mode="0550"
@@ -34,7 +34,7 @@
 
 - name: download PXE upgrade.img file
   get_url: url="{{ repo_location}}/images/pxeboot/upgrade.img" dest=/var/www/html/ks/upgrade.img force=yes owner=apache group=apache mode="0550"
-  when: pxe_bootstrap_upgrade_img
+  when: pxe_bootstrap_upgrade_img|bool
 
 - name: create_dhcpd_config_dir
   file: path=/etc/dhcp/dhcpd.d state=directory owner=root group=root mode="0755"
